@@ -17,9 +17,24 @@ class Listener extends \PHPUnit_Framework_BaseTestListener
         }
     }
 
+    public function hasBeenSpecifiedTestCase()
+    {
+        return $this->hasBeenSpecifiedTestCase;
+    }
+
+    public function blockGroup()
+    {
+        return $this->blockGroup;
+    }
+
+    public function blockExcludeGroup()
+    {
+        return $this->blockExcludeGroup;
+    }
+
     public function startTestSuite(\PHPUnit_Framework_TestSuite $suite)
     {
-        if ($this->hasBeenSpecifiedTestCase && class_exists($suite->getName(), false)) {
+        if ($this->hasBeenSpecifiedTestCase() && class_exists($suite->getName(), false)) {
             printf("Test case specification has been disabled by phpunit-filter-blocker. Stopped phpunit.\n");
             exit(1);
         }
@@ -30,11 +45,11 @@ class Listener extends \PHPUnit_Framework_BaseTestListener
             printf("--filter option has been disabled by phpunit-filter-blocker. Stopped phpunit.\n");
             exit(1);
         }
-        if ($this->blockGroup && get_class($suite->getIterator()) === 'PHPUnit_Runner_Filter_Group_Include') {
+        if ($this->blockGroup() && get_class($suite->getIterator()) === 'PHPUnit_Runner_Filter_Group_Include') {
             printf("--group option has been disabled by phpunit-filter-blocker. Stopped phpunit.\n");
             exit(1);
         }
-        if ($this->blockExcludeGroup && get_class($suite->getIterator()) === 'PHPUnit_Runner_Filter_Group_Exclude') {
+        if ($this->blockExcludeGroup() && get_class($suite->getIterator()) === 'PHPUnit_Runner_Filter_Group_Exclude') {
             printf("--exclude-group option has been disabled by phpunit-filter-blocker. Stopped phpunit.\n");
             exit(1);
         }

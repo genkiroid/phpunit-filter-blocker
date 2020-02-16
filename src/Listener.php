@@ -1,8 +1,13 @@
 <?php
 namespace PHPUnitFilterBlocker;
 
-class Listener extends \PHPUnit_Framework_BaseTestListener
+use PHPUnit\Framework\TestListener;
+use PHPUnit\Framework\TestListenerDefaultImplementation;
+
+class Listener implements TestListener
 {
+    use TestListenerDefaultImplementation;
+
     private $hasBeenSpecifiedTestCase = true;
 
     private $blockGroup = false;
@@ -17,7 +22,7 @@ class Listener extends \PHPUnit_Framework_BaseTestListener
         }
     }
 
-    public function startTestSuite(\PHPUnit_Framework_TestSuite $suite)
+    public function startTestSuite(\PHPUnit\Framework\TestSuite $suite): void
     {
         if ($this->hasBeenSpecifiedTestCase && class_exists($suite->getName(), false)) {
             printf("Test case specification has been disabled by phpunit-filter-blocker. Stopped phpunit.\n");
@@ -26,15 +31,15 @@ class Listener extends \PHPUnit_Framework_BaseTestListener
 
         $this->hasBeenSpecifiedTestCase = false;
 
-        if (get_class($suite->getIterator()) === 'PHPUnit_Runner_Filter_Test') {
+        if (get_class($suite->getIterator()) === 'PHPUnit\Runner\Filter\NameFilterIterator') {
             printf("--filter option has been disabled by phpunit-filter-blocker. Stopped phpunit.\n");
             exit(1);
         }
-        if ($this->blockGroup && get_class($suite->getIterator()) === 'PHPUnit_Runner_Filter_Group_Include') {
+        if ($this->blockGroup && get_class($suite->getIterator()) === 'PHPUnit\Runner\Filter\IncludeGroupFilterIterator') {
             printf("--group option has been disabled by phpunit-filter-blocker. Stopped phpunit.\n");
             exit(1);
         }
-        if ($this->blockExcludeGroup && get_class($suite->getIterator()) === 'PHPUnit_Runner_Filter_Group_Exclude') {
+        if ($this->blockExcludeGroup && get_class($suite->getIterator()) === 'PHPUnit\Runner\Filter\ExcludeGroupFilterIterator') {
             printf("--exclude-group option has been disabled by phpunit-filter-blocker. Stopped phpunit.\n");
             exit(1);
         }

@@ -1,7 +1,7 @@
 {
   "name": "genkiroid/phpunit-filter-blocker",
   "require": {
-    "phpunit/phpunit": "^5.6.3"
+    "phpunit/phpunit": ">=6.0.0"
   },
   "autoload": {
     "classmap": [

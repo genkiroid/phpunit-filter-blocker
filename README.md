@@ -36,7 +36,7 @@ If you want to block `--group` and `--exclude-group` options too, change `false`
 Block test case specification. (Fixed)
 ```
 $ vendor/bin/phpunit tests/exampleTest.php
-PHPUnit 5.6.3 by Sebastian Bergmann and contributors.
+PHPUnit 9.0.1 by Sebastian Bergmann and contributors.
 
 Test case specification has been disabled by phpunit-filter-blocker. Stopped phpunit.
 ```
@@ -44,7 +44,7 @@ Test case specification has been disabled by phpunit-filter-blocker. Stopped php
 Block `--filter` option. (Fixed)
 ```
 $ vendor/bin/phpunit tests/ --filter="Hello"
-PHPUnit 5.6.3 by Sebastian Bergmann and contributors.
+PHPUnit 9.0.1 by Sebastian Bergmann and contributors.
 
 --filter option has been disabled by phpunit-filter-blocker. Stopped phpunit.
 ```
@@ -52,7 +52,7 @@ PHPUnit 5.6.3 by Sebastian Bergmann and contributors.
 Block `--group` option. (Option)
 ```
 $ vendor/bin/phpunit tests/ --group=hello
-PHPUnit 5.6.3 by Sebastian Bergmann and contributors.
+PHPUnit 9.0.1 by Sebastian Bergmann and contributors.
 
 --group option has been disabled by phpunit-filter-blocker. Stopped phpunit.
 ```
@@ -60,19 +60,19 @@ PHPUnit 5.6.3 by Sebastian Bergmann and contributors.
 Block `--exclude-group` option. (Option)
 ```
 $ vendor/bin/phpunit tests/ --exclude-group=hello
-PHPUnit 5.6.3 by Sebastian Bergmann and contributors.
+PHPUnit 9.0.1 by Sebastian Bergmann and contributors.
 
---exclude-group option has been disabled by phpunit-filter-blocker. Stopped phpunit.
+--group option has been disabled by phpunit-filter-blocker. Stopped phpunit.
 ```
 
 No blocking example.
 ```
 $ vendor/bin/phpunit tests/
-PHPUnit 5.6.3 by Sebastian Bergmann and contributors.
+PHPUnit 9.0.1 by Sebastian Bergmann and contributors.
 
 ..                                                                  2 / 2 (100%)
 
-Time: 79 ms, Memory: 4.00MB
+Time: 83 ms, Memory: 6.00 MB
 
 OK (2 tests, 2 assertions)
 ```

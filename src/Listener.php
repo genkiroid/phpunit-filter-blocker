@@ -9,6 +9,13 @@ class Listener extends \PHPUnit_Framework_BaseTestListener
 
     private $blockExcludeGroup = false;
 
+    /**
+     * Construct Listener instance
+     *
+     * @param mixed[] $options Array of arguments from phpunit.xml
+     *
+     * @return PHPUnitFilterBlocker\Listener
+     */
     public function __construct(array $options = [])
     {
         if (!empty($options)) {
@@ -17,21 +24,41 @@ class Listener extends \PHPUnit_Framework_BaseTestListener
         }
     }
 
+    /**
+     * Getter of hasBeenSpecifiedTestCase
+     *
+     * @return boolean
+     */
     public function hasBeenSpecifiedTestCase()
     {
         return $this->hasBeenSpecifiedTestCase;
     }
 
+    /**
+     * Getter of blockGroup
+     *
+     * @return boolean
+     */
     public function blockGroup()
     {
         return $this->blockGroup;
     }
 
+    /**
+     * Getter of blockExcludeGroup
+     *
+     * @return boolean
+     */
     public function blockExcludeGroup()
     {
         return $this->blockExcludeGroup;
     }
 
+    /**
+     * Implementation of startTestSuite
+     *
+     * @param \PHPUnit_Framework_TestSuite $suite TestSuite instance
+     */
     public function startTestSuite(\PHPUnit_Framework_TestSuite $suite)
     {
         if ($this->hasBeenSpecifiedTestCase() && class_exists($suite->getName(), false)) {

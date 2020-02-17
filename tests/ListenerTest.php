@@ -1,4 +1,6 @@
 <?php
+include __DIR__ . '/../vendor/autoload.php';
+
 use PHPUnitFilterBlocker\Listener;
 
 class ListenerTest extends PHPUnit_Framework_TestCase

@@ -1,7 +1,7 @@
 <?php
 use PHPUnitFilterBlocker\Listener;
 
-class ListenerTest extends PHPUnit_Framework_TestCase
+class ListenerTest extends PHPUnit\Framework\TestCase
 {
     public function testConstruct()
     {

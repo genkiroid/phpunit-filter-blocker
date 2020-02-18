@@ -82,7 +82,7 @@ class Listener implements TestListener
             exit(1);
         }
         if ($this->blockExcludeGroup() && get_class($suite->getIterator()) === 'PHPUnit\Runner\Filter\ExcludeGroupFilterIterator') {
-            printf("--group option has been disabled by phpunit-filter-blocker. Stopped phpunit.\n");
+            printf("--exclude-group option has been disabled by phpunit-filter-blocker. Stopped phpunit.\n");
             exit(1);
         }
     }

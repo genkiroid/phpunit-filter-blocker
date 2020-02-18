@@ -2,6 +2,8 @@
 
 PHPUnitFilterBlocker is custom implementation of PHPUnit Framework TestListener. It mainly blocks PHPUnit's filter option to prevent misconfiguration in CI.
 
+![CI](https://github.com/genkiroid/phpunit-filter-blocker/workflows/CI/badge.svg?branch=master)
+
 ## Installation
 
 ```

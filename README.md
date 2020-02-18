@@ -62,7 +62,7 @@ Block `--exclude-group` option. (Option)
 $ vendor/bin/phpunit tests/ --exclude-group=hello
 PHPUnit 9.0.1 by Sebastian Bergmann and contributors.
 
---group option has been disabled by phpunit-filter-blocker. Stopped phpunit.
+--exclude-group option has been disabled by phpunit-filter-blocker. Stopped phpunit.
 ```
 
 No blocking example.
